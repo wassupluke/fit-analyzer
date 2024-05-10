@@ -28,14 +28,14 @@ def compare_fits(files):
 
         df = pd.DataFrame(messages["record_mesgs"])
         dfs.append(df)
-        print(df)
 
-    metric = input(f"Metric to analyze {list(df.columns)}: ")
+    x_metric = input(f"Metric for x-axis {list(df.columns)}: ")
+    y_metric = input(f"Metric for y-axis {list(df.columns)}: ")
 
-    plt.plot(dfs[0]["distance"], dfs[0][metric], "g", label=files[0])
-    plt.plot(dfs[1]["distance"], dfs[1][metric], "c", label=files[1])
+    plt.plot(dfs[0][x_metric], dfs[0][y_metric], "g", label=files[0])
+    plt.plot(dfs[1][x_metric], dfs[1][y_metric], "c", label=files[1])
     plt.legend(loc="lower center")
-    plt.title(metric)
+    plt.title(f"{y_metric} / {x_metric}")
     plt.show()
 
 
